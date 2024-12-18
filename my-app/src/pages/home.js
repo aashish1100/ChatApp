@@ -9,7 +9,7 @@ const HomePage = () => {
   const { userAuth: { role } } = useContext(UserContext);
   useEffect(() => {
     // Fetch users from your API
-    fetch(`${process.env.REACT_APP_VITE_SERVER_DOMAIN}/api/users`)
+    fetch(`/api/users`)
       .then((response) => response.json())
       .then((data) => setUsers(data))
       .catch((err) => console.error("Error fetching users:", err));

@@ -29,7 +29,7 @@ const io = new Server(server, {
   },
 });
 
-let PORT = process.env.PORT;
+let PORT = process.env.PORT || "5000";
 
 // Initialize Firebase Admin
 admin.initializeApp({
