@@ -5,7 +5,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const cors = require("cors");
 const admin = require('firebase-admin');
-const serviceAccountKey = require("./bloggin-36eee-firebase-adminsdk-qlmfx-59b94bb48f.json");
+const serviceAccountKey = JSON.parse(process.env.FIREBASE_CREDENTIALS);
 const { getAuth } = require("firebase-admin/auth");
 const { storage } = require("./cloudConfig.js");
 
