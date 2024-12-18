@@ -1,0 +1,63 @@
+/* Navbar Collapse: Small Screens */
+.profileDropdown{
+    width: 80px;
+    transform:translate(-60%) ;     
+}
+.profileImg{
+    
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
+    
+}
+@media (max-width: 992px) {
+    .navbar-collapse {
+      position: fixed; /* Make the navbar collapse fixed */
+      top: 0;
+      right: -100%; /* Start off-screen to the right */
+      width: 70%; /* Width of the sliding menu */
+      height: 100vh; /* Full screen height */
+      background-color: #343a40; /* Match the navbar's background color */
+      overflow-y: auto; /* Allow scrolling for long content */
+      transition: right 0.4s ease-in-out; /* Smooth slide-in animation */
+      z-index: 1050; /* Ensure it's above other content */
+      padding-left: 20px; /* Add padding on the left */
+      box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5); 
+    }
+    .profileDropdown{
+        width: 80px;
+        transform:translate(-10%) ;
+         
+    }
+
+    .profileImg{
+     margin-top: 20px;
+    }
+  
+    /* Navbar Collapse: When Expanded */
+    .navbar-collapse.show {
+      right: 0; /* Slide into view */
+    }
+  
+    /* Ensure toggler button is on top */
+    .navbar-toggler {
+      z-index: 1100;
+    }
+  }
+  
+  /* Restore Default Behavior for Larger Screens */
+  @media (min-width: 992px) {
+    .navbar-collapse {
+      position: static; /* Default Bootstrap behavior */
+      width: auto; /* Reset width */
+      height: auto; /* Reset height */
+      background-color: transparent; /* No background color */
+      overflow: visible; /* No scroll behavior needed */
+      transition: none; /* No sliding animation */
+    }
+  
+    .navbar-toggler {
+      z-index: auto; /* Reset z-index */
+    }
+  }
+  
