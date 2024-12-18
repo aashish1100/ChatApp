@@ -9,7 +9,7 @@ const HomePage = () => {
   const { userAuth: { role } } = useContext(UserContext);
   useEffect(() => {
     // Fetch users from your API
-    fetch("http://localhost:3000/api/users")
+    fetch(`${process.env.REACT_APP_VITE_SERVER_DOMAIN}/api/users`)
       .then((response) => response.json())
       .then((data) => setUsers(data))
       .catch((err) => console.error("Error fetching users:", err));
@@ -17,6 +17,7 @@ const HomePage = () => {
 
   // Handle navigation when a chat card is clicked
   const handleChatClick = (userId) => {
+    
     navigate(`/users/chat/${userId}`); // Redirect to the chat route
   };
   const handleDashboardClick = () => {

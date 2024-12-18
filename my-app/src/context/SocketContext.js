@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { io } from "socket.io-client";
 
 // Replace with your backend URL
-const SOCKET_URL = "http://localhost:3000"; 
+const SOCKET_URL = `${process.env.REACT_APP_VITE_SERVER_DOMAIN}`; 
 
 const SocketContext = createContext();
 

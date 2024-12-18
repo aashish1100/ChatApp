@@ -24,6 +24,8 @@ function AdminPage() {
   const [isEditMode, setIsEditMode] = useState(false);
   const [redirectToHome, setRedirectToHome] = useState(false);  // State for redirect
 
+  const serverDomain = process.env.REACT_APP_VITE_SERVER_DOMAIN;
+
   // Fetch user data once on component mount
   useEffect(() => {
     fetchUsers();
@@ -32,7 +34,7 @@ function AdminPage() {
   const fetchUsers = () => {
     if (access_token) {
       axios
-        .get('http://localhost:3000/api/admin/users', {
+        .get(`${serverDomain}/api/admin/users`, {
           headers: { Authorization: `Bearer ${access_token}` },
         })
         .then((response) => {
@@ -53,8 +55,8 @@ function AdminPage() {
     e.preventDefault();
     
     const endpoint = isEditMode
-      ? `http://localhost:3000/api/admin/users/${currentUser._id}`
-      : 'http://localhost:3000/api/admin/users';
+      ? `${serverDomain}/api/admin/users/${currentUser._id}`
+      : `${serverDomain}/api/admin/users`;
     const method = isEditMode ? 'put' : 'post';
  
     axios[method](endpoint, currentUser, {
@@ -78,7 +80,7 @@ function AdminPage() {
   const handleDeleteUser = (userId) => {
     if (window.confirm('Are you sure you want to delete this user?')) {
       axios
-        .delete(`http://localhost:3000/api/admin/users/${userId}`, {
+        .delete(`${serverDomain}/api/admin/users/${userId}`, {
           headers: { Authorization: `Bearer ${access_token}` },
         })
         .then(() => {
@@ -95,7 +97,7 @@ function AdminPage() {
   const handleRestrictUser = (userId) => {
     axios
       .patch(
-        `http://localhost:3000/api/admin/users/${userId}/restrict`,
+        `${serverDomain}/api/admin/users/${userId}/restrict`,
         {},
         { headers: { Authorization: `Bearer ${access_token}` } }
       )
@@ -145,7 +147,7 @@ function AdminPage() {
         }));
   
       axios
-        .post('http://localhost:3000/api/admin/users/import', csvData, {
+        .post(`${serverDomain}/api/admin/users/import`, csvData, {
           headers: { Authorization: `Bearer ${access_token}` },
         })
         .then(() => {
@@ -291,9 +293,9 @@ function AdminPage() {
               </Form.Control>
             </Form.Group>
             <Form.Group>
+              <Form.Label>Restrict User</Form.Label>
               <Form.Check
                 type="checkbox"
-                label="Restricted"
                 checked={currentUser.isRestricted}
                 onChange={(e) =>
                   setCurrentUser({

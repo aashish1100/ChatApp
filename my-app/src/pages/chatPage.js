@@ -27,7 +27,7 @@ function ChatPage({ receiverId }) {
   useEffect(() => {
     if (receiverId && access_token) {
       axios
-        .get(`http://localhost:3000/api/user/${receiverId}`, {
+        .get(`${process.env.REACT_APP_VITE_SERVER_DOMAIN}/api/user/${receiverId}`, {
           headers: {
             Authorization: `Bearer ${access_token}`,
           },
@@ -46,7 +46,7 @@ function ChatPage({ receiverId }) {
   useEffect(() => {
     if (access_token) {
       axios
-        .get(`http://localhost:3000/chat/${receiverId}`, {
+        .get(`${process.env.REACT_APP_VITE_SERVER_DOMAIN}/chat/${receiverId}`, {
           headers: {
             Authorization: `Bearer ${access_token}`,
           },
@@ -102,7 +102,7 @@ function ChatPage({ receiverId }) {
     if (file) formData.append('file', file);
 
     try {
-      const response = await axios.post('http://localhost:3000/chat/send', formData, {
+      const response = await axios.post(`${process.env.REACT_APP_VITE_SERVER_DOMAIN}/chat/send`, formData, {
         headers: {
           Authorization: `Bearer ${access_token}`,
           'Content-Type': 'multipart/form-data',
@@ -208,27 +208,26 @@ function ChatPage({ receiverId }) {
         </ListGroup>
         
         {filePreview && (
-  <div className="file-preview">
-    <h6>File Preview:</h6>
-    {file.type.startsWith('image/') ? (
-      <div className="image-preview-container">
-        <img src={filePreview} alt="Preview" className="file-preview-image" />
-        <button type="button" className="cancel-btn" onClick={cancelFile}>Cancel</button>
-      </div>
-    ) : file.type.startsWith('video/') ? (
-      <div className="video-preview-container">
-        <video src={filePreview} controls className="file-preview-video" />
-        <button type="button" className="cancel-btn" onClick={cancelFile}>Cancel</button>
-      </div>
-    ) : (
-      <div className="file-preview-text">
-        <p>{file.name}</p>
-        <button type="button" className="cancel-btn" onClick={cancelFile}>Cancel</button>
-      </div>
-    )}
-  </div>
-)}
-
+          <div className="file-preview">
+            <h6>File Preview:</h6>
+            {file.type.startsWith('image/') ? (
+              <div className="image-preview-container">
+                <img src={filePreview} alt="Preview" className="file-preview-image" />
+                <button type="button" className="cancel-btn" onClick={cancelFile}>Cancel</button>
+              </div>
+            ) : file.type.startsWith('video/') ? (
+              <div className="video-preview-container">
+                <video src={filePreview} controls className="file-preview-video" />
+                <button type="button" className="cancel-btn" onClick={cancelFile}>Cancel</button>
+              </div>
+            ) : (
+              <div className="file-preview-text">
+                <p>{file.name}</p>
+                <button type="button" className="cancel-btn" onClick={cancelFile}>Cancel</button>
+              </div>
+            )}
+          </div>
+        )}
 
         {/* Message Form */}
         <Form ref={formElement} onSubmit={sendMessage} className="d-flex align-items-center">
@@ -248,9 +247,8 @@ function ChatPage({ receiverId }) {
             value={newMessage}
             onChange={(e) => setNewMessage(e.target.value)}
             className="message-input"
-            disabled={isRestricted}
           />
-          <Button type="submit" className="send-btn" disabled={isRestricted}>
+          <Button type="submit" variant="primary" className="send-btn" disabled={isRestricted}>
             Send
           </Button>
         </Form>

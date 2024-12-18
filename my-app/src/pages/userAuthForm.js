@@ -14,8 +14,9 @@ function AuthForm({ type }) {
   let {userAuth:{access_token},setUserAuth}=useContext(UserContext)
   
   const userAuthThroughServer = (serverRoute, formData) => {
+    console.log(`${process.env.REACT_APP_VITE_SERVER_DOMAIN}${serverRoute}`)
     axios
-  .post('http://localhost:3000' + serverRoute, formData, {
+  .post(`${process.env.REACT_APP_VITE_SERVER_DOMAIN}${serverRoute}`, formData, {
     headers: {
       'Content-Type': 'application/json', // Ensure the request header is set to JSON
     },
