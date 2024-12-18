@@ -14,9 +14,9 @@ function AuthForm({ type }) {
   let {userAuth:{access_token},setUserAuth}=useContext(UserContext)
   
   const userAuthThroughServer = (serverRoute, formData) => {
-    console.log(`${process.env.REACT_APP_VITE_SERVER_DOMAIN}${serverRoute}`)
+  
     axios
-  .post(`${process.env.REACT_APP_VITE_SERVER_DOMAIN}${serverRoute}`, formData, {
+  .post(`${serverRoute}`, formData, {
     headers: {
       'Content-Type': 'application/json', // Ensure the request header is set to JSON
     },
@@ -26,10 +26,10 @@ function AuthForm({ type }) {
     setUserAuth(data);
   })
   .catch((error) => {
-    console.log("yes");
+    
     if (error.response) {
       // Server responded with an error
-      console.log(error.response);
+      
       setError(error.response.data?.error || "An unknown error occurred.");
     } else if (error.request) {
       // Request was made, but no response received

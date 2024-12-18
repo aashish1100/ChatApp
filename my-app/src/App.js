@@ -17,7 +17,7 @@ function App() {
   useEffect(() => {
     let userInSession = lookInSession("user");
     userInSession ? setUserAuth(JSON.parse(userInSession)) : setUserAuth({ access_token: null });
-    console.log(JSON.parse(userInSession))
+    
   }, []);
    
    

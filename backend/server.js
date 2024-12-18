@@ -94,7 +94,7 @@ const verifyAdmin = async(req, res, next) => {
 
 
 app.get("/api/admin/users", verifyToken, verifyAdmin, async (req, res) => {
-  console.log("here")
+ 
   try {
     const users = await User.find() // Optionally exclude password
     res.status(200).json(users);
@@ -133,7 +133,7 @@ app.put("/api/admin/users/:userId", verifyToken, verifyAdmin, async (req, res) =
 });
 
 app.patch('/api/admin/users/:userId/restrict', verifyToken, verifyAdmin, async (req, res) => {
-  console.log("resss")
+ 
   const { userId } = req.params;
 
   try {
@@ -275,7 +275,7 @@ app.post('/chat/send', verifyToken, upload.single('file'), async (req, res) => {
     await newMessage.save();
 
     // Emit new message event
-    console.log("Emitting message to receiver:", receiverId);
+   
     io.emit('receive_message', {newMessage,receiverId});
 
     res.status(200).json({ message: newMessage });

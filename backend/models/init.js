@@ -53,7 +53,7 @@ const initializeDummyData = async () => {
 
     // Save users to database
     const savedUsers = await User.insertMany(dummyUsers);
-    console.log("Users initialized:", savedUsers.length);
+    
 
     // Create dummy messages between users
     const messages = [];
@@ -74,7 +74,7 @@ const initializeDummyData = async () => {
 
     // Save messages to database
     const savedMessages = await Message.insertMany(messages);
-    console.log("Messages initialized:", savedMessages.length);
+   
   } catch (err) {
     console.error("Error initializing dummy data:", err);
   }

@@ -27,7 +27,7 @@ function ChatPage({ receiverId }) {
   useEffect(() => {
     if (receiverId && access_token) {
       axios
-        .get(`${process.env.REACT_APP_VITE_SERVER_DOMAIN}/api/user/${receiverId}`, {
+        .get(`/api/user/${receiverId}`, {
           headers: {
             Authorization: `Bearer ${access_token}`,
           },
@@ -46,7 +46,7 @@ function ChatPage({ receiverId }) {
   useEffect(() => {
     if (access_token) {
       axios
-        .get(`${process.env.REACT_APP_VITE_SERVER_DOMAIN}/chat/${receiverId}`, {
+        .get(`/chat/${receiverId}`, {
           headers: {
             Authorization: `Bearer ${access_token}`,
           },
@@ -102,7 +102,7 @@ function ChatPage({ receiverId }) {
     if (file) formData.append('file', file);
 
     try {
-      const response = await axios.post(`${process.env.REACT_APP_VITE_SERVER_DOMAIN}/chat/send`, formData, {
+      const response = await axios.post(`/chat/send`, formData, {
         headers: {
           Authorization: `Bearer ${access_token}`,
           'Content-Type': 'multipart/form-data',
