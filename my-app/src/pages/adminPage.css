@@ -1,0 +1,146 @@
+/* Admin Page Styles */
+.admin-page {
+    padding: 20px;
+}
+
+.admin-page h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.admin-page .alert {
+    margin-bottom: 20px;
+}
+
+.admin-page button {
+    margin: 5px;
+    font-size: 1rem;
+    padding: 10px 15px;
+    text-align: center;
+}
+
+.admin-page button:focus {
+    box-shadow: none;
+}
+
+/* Buttons styling */
+.admin-page button.btn {
+    font-weight: bold;
+}
+
+.admin-page button.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.admin-page button.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.admin-page button.btn-warning {
+    background-color: #ffc107;
+    border-color: #ffc107;
+}
+
+.admin-page button.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.admin-page button.btn-info {
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+}
+
+/* Layout for ListGroup items */
+.admin-page .list-group-item {
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.admin-page .list-group-item:hover {
+    background-color: #f8f9fa;
+}
+
+/* Responsive styling for user list items */
+@media (max-width: 768px) {
+    .admin-page .list-group-item {
+        padding: 12px;
+    }
+
+    .admin-page .list-group-item .row {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .admin-page .list-group-item .col {
+        margin-bottom: 10px;
+    }
+
+    .admin-page .list-group-item .col button {
+        width: 100%;
+    }
+
+    .admin-page .list-group-item .col button.btn-info,
+    .admin-page .list-group-item .col button.btn-warning,
+    .admin-page .list-group-item .col button.btn-danger {
+        margin-bottom: 5px;
+    }
+}
+
+@media (min-width: 769px) {
+    .admin-page .list-group-item .row {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .admin-page .list-group-item .col {
+        flex-basis: 48%;
+    }
+
+    .admin-page .list-group-item .col button {
+        width: auto;
+    }
+}
+
+/* Modal styling */
+.admin-page .modal-content {
+    border-radius: 8px;
+}
+
+.admin-page .modal-header {
+    background-color: #f8f9fa;
+}
+
+.admin-page .modal-footer {
+    border-top: 1px solid #e0e0e0;
+}
+
+.admin-page .form-control {
+    margin-bottom: 10px;
+}
+
+.admin-page button[type="submit"] {
+    width: 100%;
+}
+
+/* File input styling */
+.admin-page input[type="file"] {
+    display: block;
+    margin-top: 10px;
+    width: 100%;
+    padding: 8px;
+}
+
+.admin-page .form-label {
+    font-weight: bold;
+}
+
+.admin-page .modal-title {
+    font-weight: bold;
+}

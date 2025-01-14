@@ -1,0 +1,92 @@
+/* Scoped Home Page Styles */
+.home-page {
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+
+.home-page h1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.home-page .chat-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.home-page .chat-card {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.home-page .chat-card:hover {
+    background-color: #f0f0f0;
+}
+
+.home-page .chat-header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.home-page .profile-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+.home-page .chat-header-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.home-page .chat-header-details h2 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.home-page .chat-header-details p {
+    margin: 5px 0 0;
+    font-size: 14px;
+    color: #888;
+}
+
+.home-page .social-links a {
+    color: #007bff;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.home-page .social-links a:hover {
+    text-decoration: underline;
+}
+
+.home-page .go-to-dashboard-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  
+  .home-page .go-to-dashboard-btn:hover {
+    background-color: #0056b3;
+  }
+  

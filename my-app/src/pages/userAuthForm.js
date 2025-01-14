@@ -15,7 +15,7 @@ function AuthForm({ type }) {
   
   const userAuthThroughServer = (serverRoute, formData) => {
     axios
-  .post('http://localhost:3000' + serverRoute, formData, {
+  .post(`${process.env.REACT_APP_SOCKET_URL}` + serverRoute, formData, {
     headers: {
       'Content-Type': 'application/json', // Ensure the request header is set to JSON
     },
@@ -172,7 +172,7 @@ const handleGoogleAuth=(e)=>
           <Button variant="primary" type="submit" className="w-100 submit-btn">
             {type === 'signup' ? 'Sign Up' : 'Login'}
           </Button>
-          {type==="signin"?
+          
           <div 
           className="google-signin-btn-container mt-3"
           onClick={handleGoogleAuth}
@@ -186,8 +186,7 @@ const handleGoogleAuth=(e)=>
               />
               Sign in with Google
             </Button>
-          </div>:
-          ""}
+          </div>
           {/* Toggle Link */}
           <Button
             variant="link"
