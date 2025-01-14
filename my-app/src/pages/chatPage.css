@@ -5,22 +5,28 @@
   margin: 0 auto;
   background-color: #f7f7f7;
   border-radius: 15px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 }
 
+/* Chat Card */
 .chat-page-container .chat-card {
   background-color: #c6ccd3;
   border-radius: 12px;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Prevent content overflow */
 }
 
+/* Chat Header */
 .chat-page-container .chat-header {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   padding: 5px;
-  border-bottom: 2px solid #e0e0e0; /* Border separating header */
+  border-bottom: 2px solid #e0e0e0;
   margin-bottom: 15px;
 }
 
@@ -38,26 +44,65 @@
   margin-left: 30px;
 }
 
+/* Message List */
 .chat-page-container .message-list {
-  max-height: 450px;
+  flex: 1; /* Allow the list to grow and shrink */
   overflow-y: auto;
-  margin-bottom: 20px;
   display: flex;
   flex-direction: column;
   gap: 12px;
+  margin-bottom: 10px;
 }
 
-.chat-page-container .message-input {
-  border-radius: 0 25px 25px 0;
+.chat-page-container .message-list .sent {
+  text-align: right;
+  background-color: #e0f7fa;
   padding: 10px 15px;
-  border: 1px solid #ccc;
-  font-size: 16px;
+  border-radius: 20px 20px 0 20px;
+  align-self: flex-end;
+  margin-bottom: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
+.chat-page-container .message-list .received {
+  text-align: left;
+  background-color: #f1f1f1;
+  color: #333;
+  padding: 10px 15px;
+  border-radius: 20px 20px 20px 0;
+  align-self: flex-start;
+  margin-bottom: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Text Bar */
+.chat-page-container .text-bar {
+  position: sticky;
+  bottom: 0;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border-radius: 8px;
+  z-index: 10;
+}
+
+/* Input Group */
 .chat-page-container .input-group {
   display: flex;
   align-items: center;
   gap: 5px;
+}
+
+.chat-page-container .message-input {
+  flex: 1;
+  background-color: #fafafa;
+  border-radius: 25px;
+  padding: 10px 15px;
+  border: 1px solid #302929;
+  font-size: 16px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
 }
 
 .chat-page-container .attach-btn {
@@ -85,85 +130,12 @@
 }
 
 .chat-page-container .send-btn:hover {
-  background-color: #004d40;
+  background-color: #00372d;
 }
 
-.chat-page-container .message-list .sent {
-  text-align: right;
-  background-color: #e0f7fa;
-  color: #004d40;
-  padding: 10px 15px;
-  border-radius: 20px 20px 0 20px; /* Stylish shape */
-  align-self: flex-end;
-  margin-bottom: 5px; /* Adds slight spacing for same-sender messages */
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Slight shadow for a 3D effect */
-}
-
-.chat-page-container .message-list .received {
-  text-align: left;
-  background-color: #f1f1f1;
-  color: #333;
-  padding: 10px 15px;
-  border-radius: 20px 20px 20px 0; /* Stylish shape */
-  align-self: flex-start;
-  margin-bottom: 5px; /* Adds slight spacing for same-sender messages */
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Slight shadow for a 3D effect */
-}
-
-.chat-page-container .message-list .sent p,
-.chat-page-container .message-list .received p {
-  margin: 0;
-  padding: 0;
-}
-
-.chat-page-container .message-list .received p {
-  word-wrap: break-word;
-}
-
-.chat-page-container .message-list .sent p {
-  word-wrap: break-word;
-}
-
-.chat-page-container .message-list .sent img,
-.chat-page-container .message-list .received img {
-  max-width: 100%;
-  max-height: 200px;
-  border-radius: 8px;
-}
-
-.chat-page-container .message-list .sent a,
-.chat-page-container .message-list .received a {
-  display: block;
-  margin-top: 8px;
-  font-size: 14px;
-  color: #004d40;
-}
-
-.chat-page-container .message-list .sent a:hover,
-.chat-page-container .message-list .received a:hover {
-  color: #004d40;
-}
-
-/* Additional styling for input field */
-.chat-page-container .message-input {
-  background-color: #fafafa;
-  border-radius: 25px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* Add a slight shadow for the page container */
-.chat-page-container {
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-}
-
-/* Ensure the chat container has proper padding and space for the preview box */
-.chat-page-container {
-  padding: 20px;
-}
-
-/* Style the file preview box */
+/* File Preview */
 .chat-page-container .file-preview {
-  position:absolute;
+  position: absolute;
   z-index: 10;
   bottom: 0px;
   background-color: #f8f9fa;
@@ -178,62 +150,14 @@
   width: 40%;
 }
 
-/* Style for the image preview */
-.chat-page-container .image-preview-container {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  position: relative;
-}
-
-.chat-page-container .file-preview-image {
-  max-width: 200px;
-  max-height: 150px;
-  margin-bottom: 10px;
-  border-radius: 8px;
-}
-
-/* Style for the text file preview */
-.chat-page-container .file-preview-text {
-  margin-bottom: 10px;
-  color: #333;
-  font-size: 14px;
-}
-
-/* Cancel button style */
-.chat-page-container .cancel-btn {
-  background-color: #f44336; /* Red color */
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 14px;
-  align-self: flex-start;
-}
-
-/* On hover, change the cancel button's background color */
-.chat-page-container .cancel-btn:hover {
-  background-color: #d32f2f;
-}
-
-
-
-.chat-page-container .file-preview-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 10px;
-}
-
-.chat-page-container .file-preview-image, .file-preview-video {
+.chat-page-container .file-preview-image,
+.chat-page-container .file-preview-video {
   max-width: 100%;
-  max-height: 200px; /* Set the height to make the preview size consistent */
+  max-height: 200px;
   width: auto;
   height: auto;
-  object-fit: contain; /* Ensures content scales properly without distortion */
-  border-radius: 8px; /* Optional, for rounded corners */
+  object-fit: contain;
+  border-radius: 8px;
 }
 
 .chat-page-container .cancel-btn {
@@ -242,8 +166,8 @@
   color: white;
   border: none;
   padding: 5px 10px;
-  cursor: pointer;
   border-radius: 4px;
+  cursor: pointer;
 }
 
 .chat-page-container .cancel-btn:hover {

@@ -231,7 +231,8 @@ function ChatPage({ receiverId }) {
 
 
         {/* Message Form */}
-        <Form ref={formElement} onSubmit={sendMessage} className="d-flex align-items-center">
+        
+        <Form ref={formElement} onSubmit={sendMessage} className="d-flex align-items-center text-bar">
           <label htmlFor="file-input" className="me-2 attach-btn">
             📎
           </label>
@@ -254,6 +255,7 @@ function ChatPage({ receiverId }) {
             Send
           </Button>
         </Form>
+    
       </div>
     </div>
   );

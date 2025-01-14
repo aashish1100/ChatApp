@@ -71,11 +71,11 @@ const verifyToken = (req, res, next) => {
 
   jwt.verify(token, process.env.SECRET_ACCESS_KEY, (err, decoded) => {
     if (err) {
-      console.log(err);
+    
       return res.status(403).json({ "error": "Invalid or expired token" });
     }
     req.user = decoded;
-    console.log("token verified successfully");
+   
     next();
   });
 };
@@ -93,7 +93,7 @@ const verifyAdmin = async(req, res, next) => {
 
 
 app.get("/api/admin/users", verifyToken, verifyAdmin, async (req, res) => {
-  console.log("here")
+ 
   try {
     const users = await User.find() // Optionally exclude password
     res.status(200).json(users);
@@ -132,7 +132,7 @@ app.put("/api/admin/users/:userId", verifyToken, verifyAdmin, async (req, res) =
 });
 
 app.patch('/api/admin/users/:userId/restrict', verifyToken, verifyAdmin, async (req, res) => {
-  console.log("resss")
+
   const { userId } = req.params;
 
   try {
@@ -153,9 +153,9 @@ app.patch('/api/admin/users/:userId/restrict', verifyToken, verifyAdmin, async (
 });
 
 app.post('/api/admin/users/import',  verifyToken, verifyAdmin,async (req, res) => {
-console.log("importi-------")
+
   const users = req.body; // Assumes an array of users from the frontend
-console.log(users);
+
   try {
     const createdUsers = await User.insertMany(users); // Insert all users at once
     res.status(201).json(createdUsers);
@@ -167,9 +167,9 @@ console.log(users);
 
 // Create Admin User (Admin only)
 app.post("/api/admin/users",  verifyToken, verifyAdmin, async (req, res) => {
-  console.log("hello")
+
   const { fullname, email, username, bio, role } = req.body.personal_info;
-  console.log(req.body);
+  
   try {
     const newUser = new User({
       personal_info: { fullname, email, username, bio, role },
@@ -185,7 +185,7 @@ app.post("/api/admin/users",  verifyToken, verifyAdmin, async (req, res) => {
 });
 
 app.delete('/api/admin/users/:userId', verifyToken, verifyAdmin, async (req, res) => {
-  console.log("helllllll");
+
   const { userId } = req.params;
 
   try {
@@ -274,7 +274,7 @@ app.post('/chat/send', verifyToken, upload.single('file'), async (req, res) => {
     await newMessage.save();
 
     // Emit new message event
-    console.log("Emitting message to receiver:", receiverId);
+ 
     io.emit('receive_message', {newMessage,receiverId});
 
     res.status(200).json({ message: newMessage });
@@ -357,22 +357,19 @@ app.post("/google-auth", async (req, res) => {
 
 // Socket.IO Real-Time Communication
 io.on('connection', (socket) => {
-  console.log(`User connected: ${socket.id}`);
    
   // Join a chat room
   socket.on('join_room', (roomId) => {
     socket.join(roomId);
-    console.log(`User joined room: ${roomId}`);
   });
 
   // Send a message
   socket.on('send_message', (data) => {
-    console.log("sended message");
     io.to(data.roomId).emit('receive_message', data.message);
   });
 
   socket.on('disconnect', () => {
-    console.log(`User disconnected: ${socket.id}`);
+   
   });
 });
 

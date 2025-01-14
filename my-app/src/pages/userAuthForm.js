@@ -25,7 +25,6 @@ function AuthForm({ type }) {
     setUserAuth(data);
   })
   .catch((error) => {
-    console.log("yes");
     if (error.response) {
       // Server responded with an error
       console.log(error.response);
